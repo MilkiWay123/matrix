@@ -38,19 +38,19 @@ public class Main {
                         break;
                     case "4":
                         checkMatrices();
-                        System.out.println("A + B =\n" + a.add(b));
+                        saveResult("A + B", a.add(b));
                         break;
                     case "5":
                         checkMatrices();
-                        System.out.println("A * B =\n" + a.multiply(b));
+                        saveResult("A * B", a.multiply(b));
                         break;
                     case "6":
                         checkMatrices();
-                        System.out.println("A / B =\n" + a.divide(b));
+                        saveResult("A / B", a.divide(b));
                         break;
                     case "7":
                         checkA();
-                        System.out.println("A^T =\n" + a.transpose());
+                        saveResult("A^T", a.transpose());
                         break;
                     case "8":
                         checkA();
@@ -107,6 +107,19 @@ public class Main {
             } catch (NumberFormatException e) {
             }
             System.out.println("Введите целое число от 1 до 10");
+        }
+    }
+
+    private static void saveResult(String title, ComplexMatrix result) {
+        System.out.println(title + " =\n" + result);
+        System.out.print("Сохранить результат? A - в матрицу A, B - в матрицу B, Enter - не сохранять: ");
+        String answer = sc.nextLine().trim().toUpperCase();
+        if (answer.equals("A")) {
+            a = result;
+            System.out.println("Результат сохранён в A");
+        } else if (answer.equals("B")) {
+            b = result;
+            System.out.println("Результат сохранён в B");
         }
     }
 
